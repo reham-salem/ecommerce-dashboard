@@ -1,0 +1,10 @@
+<div class="product-card">
+    <img [src]="product().imageUrl" [alt]="product().name" />
+  <h3>{{ product().name }}</h3>
+  <p class="description">{{ product().description }}</p>
+  <p class="price">{{ product().price }} جنيه</p>
+  <p class="stock" [class.low-stock]="product().stock < 5">
+    متوفر: {{ product().stock }}
+  </p>
+  <button (click)="onAddToCart()">أضف للسلة</button>
+</div>

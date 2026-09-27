@@ -1,0 +1,10 @@
+<div class="product-list">
+  @for (product of products(); track product.id) {
+    <app-product-card
+      [product]="product"
+      (addToCart)="onAddToCart($event)"
+    />
+  } @empty {
+    <p>مفيش منتجات متاحة حالياً</p>
+  }
+</div>
