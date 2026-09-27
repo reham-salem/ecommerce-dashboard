@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ProductCardComponent } from '../product-card/product-card.component';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product.model';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 
 @Component({
@@ -12,7 +13,9 @@ import { Product } from '../../models/product.model';
 })
 export class ProductListComponent {
   private productService = inject(ProductsService);
-  products = this.productService.getProducts();
+  products = toSignal(this.productService.getProducts(), {
+    initialValue: [] as Product[]
+  });
 
   onAddToCart(product: Product) {
     console.log('تمت الإضافة للسلة:', product);
